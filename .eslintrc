@@ -1,0 +1,10 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "comma-dangle": 0,
+    "no-console": 0,
+    "spaced-comment": 0,
+    "react/prop-types": 0,
+    "vars-on-top": 0
+  }
+}

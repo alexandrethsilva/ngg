@@ -1,0 +1,47 @@
+import {GraphQLSchema} from 'graphql';
+import {
+  nodeDefinitions,
+  connectionDefinitions,
+  fromGlobalId
+} from 'graphql-relay';
+
+import getObjectById from '../queries/common/getObjectById';
+
+import rootQuery from './operations/Query';
+import rootMutation from './operations/Mutation';
+import * as types from './objects';
+
+const refCreators = {
+  rootQuery,
+  rootMutation,
+  ...types,
+};
+
+const {nodeInterface, nodeField} = nodeDefinitions(
+  (globalId) => {
+    const {id} = fromGlobalId(globalId);
+
+    return getObjectById(Number(id));
+  },
+  (object) => {
+    const label = object.labels[0];
+    const refKey = label[0].toLowerCase() + label.slice(1);
+
+    return refs[refKey]; // eslint-disable-line no-use-before-define
+  }
+);
+
+const refs = Object.keys(refCreators)
+  .reduce((acc, key) => (
+    acc[key] = refCreators[key](acc),
+    acc[key + 'Connection'] = connectionDefinitions({
+      name: acc[key].name,
+      nodeType: acc[key],
+    }).connectionType,
+    acc
+  ), {nodeInterface, nodeField});
+
+export default new GraphQLSchema({
+  query: refs.rootQuery,
+  mutation: refs.rootMutation
+});

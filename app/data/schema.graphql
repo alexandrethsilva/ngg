@@ -1,0 +1,92 @@
+input CreateSessionInput {
+  email: String
+  password: String
+  clientMutationId: String!
+}
+
+type CreateSessionPayload {
+  session: Session
+  clientMutationId: String!
+}
+
+input CreateUserInput {
+  email: String
+  password: String
+  clientMutationId: String!
+}
+
+type CreateUserPayload {
+  user: User
+  clientMutationId: String!
+}
+
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type RootMutation {
+  createSession(input: CreateSessionInput!): CreateSessionPayload
+  createUser(input: CreateUserInput!): CreateUserPayload
+  setEmail(input: SetEmailInput!): SetEmailPayload
+}
+
+type RootQuery {
+  viewer: Viewer
+}
+
+type Session implements Node {
+  id: ID!
+  sid: String
+  user: User
+}
+
+type SessionConnection {
+  pageInfo: PageInfo!
+  edges: [SessionEdge]
+}
+
+type SessionEdge {
+  node: Session
+  cursor: String!
+}
+
+input SetEmailInput {
+  uuid: String
+  email: String
+  clientMutationId: String!
+}
+
+type SetEmailPayload {
+  user: User
+  clientMutationId: String!
+}
+
+type User implements Node {
+  id: ID!
+  uuid: String
+  email: String
+  sessions(before: String, after: String, first: Int, last: Int): SessionConnection
+}
+
+type UserConnection {
+  pageInfo: PageInfo!
+  edges: [UserEdge]
+}
+
+type UserEdge {
+  node: User
+  cursor: String!
+}
+
+type Viewer {
+  node(id: ID!): Node
+  user(uuid: ID): User
+  users(before: String, after: String, first: Int, last: Int): UserConnection
+}
