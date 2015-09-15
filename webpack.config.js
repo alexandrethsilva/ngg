@@ -1,16 +1,32 @@
 import path from 'path';
+import webpack from 'webpack';
 
 export default {
   devtool: '#source-map',
-  entry: path.resolve(__dirname, 'app/scripts', 'app.js'),
+  entry: [
+    'webpack-dev-server/client?http://0.0.0.0:9090',
+    'webpack/hot/only-dev-server',
+    './app/scripts/app.js'
+  ],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
   module: {
     loaders: [
+      { test: /\.json$/, loader: 'json' },
       {
         test: /\.js$/,
-        loader: 'babel',
-        query: {stage: 0, plugins: ['./build/babelRelayPlugin']}
+        exclude: /(node_modules|bower_components)/,
+        loaders: [
+          'react-hot',
+          'babel?cacheDirectory&optional[]=runtime&stage=0&plugins=./build/babelRelayPlugin'
+        ]
       }
     ]
   },
-  output: {filename: 'app.js', path: '/'}
+  output: {
+    filename: 'app.js',
+    path: '/'
+  }
 };
