@@ -24,7 +24,7 @@ class App extends React.Component {
 }
 
 export default Relay.createContainer(App, {
-  fragments: {
+  queries: {
     viewer: () => Relay.QL`
       fragment on User {
         uuid,

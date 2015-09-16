@@ -95,7 +95,7 @@ const app = new WebpackDevServer(appCompiler, {
 // Serve static resources
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 app.use('/', ROOT);
-//app.use('/user/:uuid', ROOT);
+app.use('/user/:uuid', ROOT);
 app.listen(APP_PORT, () => {
   console.log(`App is now running on ${HOST}:${APP_PORT}`);
 });

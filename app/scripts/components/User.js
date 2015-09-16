@@ -23,10 +23,11 @@ class User extends React.Component {
 
 export default Relay.createContainer(User, {
   fragments: {
-    widget: () => Relay.QL`
+    user: () => Relay.QL`
       fragment on User {
+        id,
         uuid,
-        email,
+        email
       }
     `,
   },
