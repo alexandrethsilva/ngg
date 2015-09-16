@@ -1,12 +1,11 @@
-import path from 'path';
 import webpack from 'webpack';
 
 export default {
   devtool: '#source-map',
   entry: [
-    'webpack-dev-server/client?http://0.0.0.0:9090',
+    'webpack-dev-server/client?http://0.0.0.0:3000',
     'webpack/hot/only-dev-server',
-    './app/scripts/app.js'
+    './app/scripts/app'
   ],
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -26,7 +25,9 @@ export default {
     ]
   },
   output: {
-    filename: 'app.js',
-    path: '/'
+    filename: 'bundle.js',
+    path: '/',
+    pathInfo: true,
+    publicPath: '/scripts/'
   }
 };

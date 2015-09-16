@@ -10,7 +10,7 @@ import webpack from 'webpack';
 import WebpackConfig from './webpack.config';
 import WebpackDevServer from 'webpack-dev-server';
 
-import Schema from './app/data/schema';
+import schema from './app/data/schema/index';
 
 import getUserByToken from './app/data/queries/user/getUserByToken';
 
@@ -29,9 +29,9 @@ passport.use(new BearerStrategy(
 
 const HOST = 'http://dev.engage.local';
 
-const APP_PORT = 9090;
-const GRAPHQL_PORT = 9091;
-const GRAPHQL_CONSOLE_PORT = 9092;
+const APP_PORT = 3000;
+const GRAPHQL_PORT = 3001;
+const GRAPHQL_CONSOLE_PORT = 3002;
 
 const ROOT = express.static('app/public');
 const GRAPHQL_CONSOLE_ROOT = express.static('console');
@@ -39,20 +39,12 @@ const GRAPHQL_CONSOLE_ROOT = express.static('console');
 // Expose a GraphQL endpoint
 const graphQLServer = express();
 graphQLServer.disable('x-powered-by');
-
+graphQLServer.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 graphQLServer.use(
-  morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev')
+  passport.authenticate(['bearer', 'anonymous'],{ session: false })
 );
-
-graphQLServer.use(
-  passport.authenticate(
-    ['bearer', 'anonymous'],
-    { session: false }
-  )
-);
-
-graphQLServer.use('/',graphQLHTTP(request =>({
-  schema: Schema,
+graphQLServer.use('/', graphQLHTTP(request =>({
+  schema,
   pretty: true,
   rootValue: { user: request.user }
 })));
@@ -71,13 +63,14 @@ graphQLServer.listen(GRAPHQL_PORT, () => console.log(
 // Expose a GraphQL console
 const graphQLConsole = express();
 graphQLConsole.disable('x-powered-by');
+graphQLConsole.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 graphQLConsole.use(
-  morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev')
+  passport.authenticate(['bearer', 'anonymous'],{ session: false })
 );
-graphQLConsole.use(GRAPHQL_CONSOLE_ROOT);
+graphQLConsole.use('/', GRAPHQL_CONSOLE_ROOT);
 graphQLConsole.use('/graphiql', express.static('node_modules/graphiql'));
 graphQLConsole.use('/graphql', graphQLHTTP(request => ({
-  schema: Schema,
+  schema,
   pretty: true,
   rootValue: { user: request.user }
 })));
@@ -90,11 +83,9 @@ const appCompiler = webpack(WebpackConfig);
 const app = new WebpackDevServer(appCompiler, {
   contentBase: '/app/public/',
   proxy: {
-    '/graphql': `${HOST}:${GRAPHQL_PORT}`,
-    '/console': 'http://localhost:' + GRAPHQL_CONSOLE_PORT
+    '/graphql': `${HOST}:${GRAPHQL_PORT}`
   },
-  publicPath: '/scripts/',
-  hot: true,
+  publicPath: WebpackConfig.output.publicPath,
   quiet: false,
   noInfo: false,
   stats: { colors: true },
@@ -102,11 +93,9 @@ const app = new WebpackDevServer(appCompiler, {
 });
 
 // Serve static resources
-app.use(
-  morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev')
-);
+app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 app.use('/', ROOT);
-app.use('/user/:uuid', ROOT);
+//app.use('/user/:uuid', ROOT);
 app.listen(APP_PORT, () => {
   console.log(`App is now running on ${HOST}:${APP_PORT}`);
 });
