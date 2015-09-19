@@ -60,7 +60,7 @@ async function initApp(): any {
     } else {
 
       DOM.render(component, container);
-      
+
     }
 
   } catch (error) {

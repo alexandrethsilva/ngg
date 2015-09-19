@@ -32,7 +32,7 @@ export default compose(
     (stateProps, actionProps, parentProps) => ({
       ...stateProps,
       children: [
-        <div key="users">
+        <div key="users" className="col-sm-3">
           {parentProps.viewer.users.edges.map(edge => (
             <UserComponent key={edge.cursor} user={edge.node} />
           ))}

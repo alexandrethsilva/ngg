@@ -5,7 +5,7 @@ export default {
   user: () => Relay.QL`
     fragment on User {
       uuid
-      email,
+      email
       ${UserMutations.getFragment('user')}
     }
   `

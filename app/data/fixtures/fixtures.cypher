@@ -2,18 +2,28 @@ CREATE CONSTRAINT ON (u:User) ASSERT u.uuid IS UNIQUE;
 CREATE CONSTRAINT ON (u:User) ASSERT u.email IS UNIQUE;
 CREATE CONSTRAINT ON (s:Session) ASSERT s.sid IS UNIQUE;
 
-CREATE (user:User {
+CREATE (admin:User {
   uuid: "e61d795e-fdf8-4cb7-a280-8542e66ebb25",
-  email: "u1@example.com",
-  password: "$2a$10$B1bMw3pBC1aNBrQ18jMvx.STNEqq5v7QtRpt9hzIe5uPcrBqRL43.",
-  role: "USER"
+  active: true,
+  since: "2015-09-19T16:06:40.578Z",
+  last_seen: "2015-09-19T16:06:40.578Z",
+  name: "Alexandre Theodoro da Silva",
+  birthday: "1987-02-18T16:06:40.578Z",
+  email: "a1@example.com",
+  password: "12345678",
+  role: "ADMIN"
 })
 
-CREATE (admin:User {
+CREATE (user:User {
   uuid: "e624a76a-e5c0-4388-bd02-612e55dc2299",
-  email: "u2@example.com",
-  password: "$2a$10$r4nBygb8e1CugqXhG6H.2OCLeKn9XseTatKL1xeNrmkYfqovtZ8pC",
-  role: "ADMIN"
+  active: true,
+  since: "2015-09-19T16:06:40.578Z",
+  last_seen: "2015-09-19T16:06:40.578Z",
+  name: "Annette Dobler",
+  birthday: "1983-11-11T16:06:40.578Z",
+  email: "u1@example.com",
+  password: "12345678",
+  role: "USER"
 })
 
 CREATE (userSession:Session {

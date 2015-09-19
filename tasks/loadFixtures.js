@@ -1,10 +1,9 @@
 import {readFileAsync} from 'fs-extra-promise';
-import {join} from 'path';
-import {rootDir, main} from '../utils';
-import {executeQuery, cypher} from '../../src/graphql/db';
+import {main} from './utils';
+import {executeQuery, cypher} from '../app/data/database';
 
 main(async () => {
-  const fixturesFile = join(rootDir, 'db', 'fixtures.cypher');
+  const fixturesFile = './app/data/fixtures/fixtures.cypher';
 
   const fixtures = (await readFileAsync(fixturesFile))
     .toString()
@@ -18,7 +17,7 @@ main(async () => {
 
   for (const query of fixtures) {
     await executeQuery({
-      query,
+      query
     });
   }
 });

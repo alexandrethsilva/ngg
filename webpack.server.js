@@ -34,6 +34,7 @@ const GRAPHQL_PORT = 3001;
 const GRAPHQL_CONSOLE_PORT = 3002;
 
 const ROOT = express.static('app/public');
+const STYLE_ROOT = express.static('./node_modules/bootstrap/dist/css/bootstrap.css');
 const GRAPHQL_CONSOLE_ROOT = express.static('console');
 
 // Expose a GraphQL endpoint
@@ -96,6 +97,7 @@ const app = new WebpackDevServer(appCompiler, {
 // Serve static resources
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 app.use('/', ROOT);
+app.use('/css/bootstrap.css', STYLE_ROOT);
 app.use('/user/:uuid', ROOT);
 app.listen(APP_PORT, () => {
   console.log(`App is now running on ${HOST}:${APP_PORT}`);

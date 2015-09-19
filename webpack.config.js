@@ -1,4 +1,4 @@
-import webpack from 'webpack';
+import webpack, {ProvidePlugin} from 'webpack';
 
 export default {
   devtool: '#source-map',
@@ -8,6 +8,10 @@ export default {
     './app/scripts/index'
   ],
   plugins: [
+    new ProvidePlugin({
+      'holder': 'holderjs',
+    }),
+
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],

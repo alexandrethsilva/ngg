@@ -9,8 +9,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.props.children}
+      <div className="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+            {this.props.children}
+          </div>
+        </div>
       </div>
     );
   }
