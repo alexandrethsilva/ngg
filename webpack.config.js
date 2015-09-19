@@ -5,7 +5,7 @@ export default {
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:3000',
     'webpack/hot/only-dev-server',
-    './app/scripts/app'
+    './app/scripts/index'
   ],
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -18,7 +18,6 @@ export default {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         loaders: [
-          'react-hot',
           'babel?cacheDirectory&optional[]=runtime&stage=0&plugins=./build/babelRelayPlugin'
         ]
       }

@@ -41,7 +41,7 @@ const graphQLServer = express();
 graphQLServer.disable('x-powered-by');
 graphQLServer.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 graphQLServer.use(
-  passport.authenticate(['bearer', 'anonymous'],{ session: false })
+  passport.authenticate(['bearer', 'anonymous'], { session: false })
 );
 graphQLServer.use('/', graphQLHTTP(request =>({
   schema,
@@ -65,7 +65,7 @@ const graphQLConsole = express();
 graphQLConsole.disable('x-powered-by');
 graphQLConsole.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 graphQLConsole.use(
-  passport.authenticate(['bearer', 'anonymous'],{ session: false })
+  passport.authenticate(['bearer', 'anonymous'], { session: false })
 );
 graphQLConsole.use('/', GRAPHQL_CONSOLE_ROOT);
 graphQLConsole.use('/graphiql', express.static('node_modules/graphiql'));
@@ -85,6 +85,7 @@ const app = new WebpackDevServer(appCompiler, {
   proxy: {
     '/graphql': `${HOST}:${GRAPHQL_PORT}`
   },
+  hot: true,
   publicPath: WebpackConfig.output.publicPath,
   quiet: false,
   noInfo: false,

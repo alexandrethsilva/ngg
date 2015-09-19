@@ -5,6 +5,8 @@
     "no-console": 0,
     "spaced-comment": 0,
     "react/prop-types": 0,
-    "vars-on-top": 0
+    "vars-on-top": 0,
+    "padded-blocks": 0,
+    "guard-for-in": 0
   }
 }
