@@ -18,6 +18,7 @@ export default {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         loaders: [
+          'react-hot',
           'babel?cacheDirectory&optional[]=runtime&stage=0&plugins=./build/babelRelayPlugin'
         ]
       }

@@ -21,7 +21,7 @@ export default function createAppStore(initialState) {
 
   finalCreateStore = compose(
     applyMiddleware(thunkMiddleware),
-    reduxReactRouter({ appRoutes, createHistory })
+    reduxReactRouter({ routes: appRoutes, createHistory })
   )(finalCreateStore);
 
   return finalCreateStore(combineReducers(appReducers, initialState));
