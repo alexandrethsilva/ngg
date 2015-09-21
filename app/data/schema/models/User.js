@@ -1,8 +1,7 @@
 import {
   GraphQLObjectType,
   GraphQLString,
-  GraphQLBoolean,
-  GraphQLNonNull
+  GraphQLBoolean
 } from 'graphql';
 
 import getUserSessions from '../../queries/user/getUserSessions';

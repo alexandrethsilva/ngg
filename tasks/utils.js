@@ -1,6 +1,4 @@
-import inquirer from 'inquirer';
 import {join} from 'path';
-import {writeFileAsync, readFileAsync} from 'fs-extra-promise';
 import nodeGlob from 'glob';
 
 export const rootDir = join(__dirname, '..');

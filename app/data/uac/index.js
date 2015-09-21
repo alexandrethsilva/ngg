@@ -29,7 +29,8 @@ export {default as wrapConnectionField} from './wrapConnectionField';
 export default byType({
   CreateSessionPayload: allow,
   CreateUserPayload: allow,
-  SetEmailPayload: allow,
+  SetUserEmailPayload: allow,
+  SetUserNamePayload: allow,
 
   Node: allow,
 

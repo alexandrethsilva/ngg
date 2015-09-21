@@ -10,8 +10,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-        <div class="row">
-          <div class="col-xs-12">
+        <div className="row">
+          <div className="col-xs-12">
             {this.props.children}
           </div>
         </div>

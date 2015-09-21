@@ -9,7 +9,7 @@ import getObjectById from '../queries/common/getObjectById';
 
 import rootQuery from './operations/Query';
 import rootMutation from './operations/Mutation';
-import * as types from './objects';
+import * as types from './models';
 
 const refCreators = {
   rootQuery,

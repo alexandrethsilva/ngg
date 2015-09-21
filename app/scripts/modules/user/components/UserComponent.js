@@ -7,6 +7,8 @@ import {connect} from 'react-redux';
 
 import UserFragments from '../fragments/UserFragments';
 
+import * as actionCreators from '../actions/UserActionCreators';
+
 class User extends React.Component {
   static propTypes = {
     user: React.PropTypes.object.isRequired
@@ -14,8 +16,8 @@ class User extends React.Component {
 
   imagePlaceholder(width: string = '100%', height: string = '100%'): any {
     return (
-      <div 
-        className="card-img-top" 
+      <div
+        className="card-img-top"
         style={{
           'backgroundColor': 'rgb(238, 238, 238)',
           'color': 'rgb(170, 170, 170)',
@@ -27,22 +29,34 @@ class User extends React.Component {
     );
   }
 
+  _handleUserNameInputBlur(): any {
+    const {user} = this.props;
+    const name = this.refs.userNameInput.value;
+    actionCreators.setUserName({user, name});
+  }
+
   render() {
     const { user } = this.props;
 
     return (
-      <div className="card">
-        {this.imagePlaceholder(undefined, '180px')}
-        <div className="card-block">
-          <h4 className="card-title">{user.name}</h4>
-          <p className="card-text">Some excerpt about the user.</p>
-        </div>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item"><strong>Email</strong> {user.email}</li>
-        </ul>
-        <div className="card-block">
-          <a href="#" className="card-link">View more</a>
-          <a href="#" className="card-link">Send message</a>
+      <div className="col-sm-3">
+        <div className="card">
+          {this.imagePlaceholder(undefined, '180px')}
+          <div className="card-block">
+            <h4 className="card-title">{user.name}</h4>
+            <input
+              ref="userNameInput"
+              type="text"
+              onBlur={this._handleUserNameInputBlur.bind(this)} />
+            <p className="card-text">Some excerpt about the user.</p>
+          </div>
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item"><strong>Email</strong> {user.email}</li>
+          </ul>
+          <div className="card-block">
+            <a href="#" className="card-link">View more</a>
+            <a href="#" className="card-link">Send message</a>
+          </div>
         </div>
       </div>
     );
@@ -56,7 +70,7 @@ export default compose(
   }),
   connect(
     null,
-    {},
+    actionCreators,
     (stateProps, actionProps, parentProps) => ({
       user: parentProps.user
     })
