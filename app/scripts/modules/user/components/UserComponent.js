@@ -69,7 +69,7 @@ export default compose(
     fragments: UserFragments
   }),
   connect(
-    null,
+    state => state,
     actionCreators,
     (stateProps, actionProps, parentProps) => ({
       user: parentProps.user

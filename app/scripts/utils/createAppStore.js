@@ -24,5 +24,5 @@ export default function createAppStore(initialState) {
     reduxReactRouter({ routes: appRoutes, createHistory })
   )(finalCreateStore);
 
-  return finalCreateStore(combineReducers(appReducers, initialState));
+  return finalCreateStore(combineReducers(appReducers), initialState);
 }

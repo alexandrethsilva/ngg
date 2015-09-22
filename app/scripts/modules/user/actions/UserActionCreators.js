@@ -8,5 +8,5 @@ export function setUserEmail({user, email}) {
 }
 
 export function setUserName({user, name}) {
-  return () => applyMutation(new UserNameMutation({user, name}));
+  return applyMutation(new UserNameMutation({user, name}));
 }
