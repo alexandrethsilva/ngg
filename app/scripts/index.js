@@ -64,7 +64,7 @@ async function initApp(): any {
     }
 
   } catch (error) {
-    Logger.error('There\' an error with the application.', error);
+    Logger.error('There\'s a problem with the application.', error);
   }
 }
 

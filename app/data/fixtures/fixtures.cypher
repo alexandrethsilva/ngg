@@ -10,7 +10,7 @@ CREATE (admin:User {
   name: "Alexandre Theodoro da Silva",
   birthday: "1987-02-18T16:06:40.578Z",
   email: "a1@example.com",
-  password: "12345678",
+  password: "$2a$10$AENmBPIy5a13qGkNiyssNeOeYNhASbJTRgVgcs3z5bQl0Im97X7hu",
   role: "ADMIN"
 })
 
@@ -22,7 +22,7 @@ CREATE (user:User {
   name: "Annette Dobler",
   birthday: "1983-11-11T16:06:40.578Z",
   email: "u1@example.com",
-  password: "12345678",
+  password: "$2a$10$p7w8khG4NbcR0xSdy/MK2u33hzkDBCHZwmRJFaVYqNJjbBPuwv3s6",
   role: "USER"
 })
 

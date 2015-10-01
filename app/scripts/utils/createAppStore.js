@@ -2,7 +2,7 @@ import {createHistory} from 'history';
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
 
 import thunkMiddleware from 'redux-thunk';
-import {batchedUpdatesMiddleware} from 'redux-batched-updates';
+// import {batchedUpdatesMiddleware} from 'redux-batched-updates';
 import {reduxReactRouter} from 'redux-react-router';
 
 import appRoutes from '../modules/common/routes/AppRoutes';
@@ -20,10 +20,10 @@ export default function createAppStore(initialState) {
     )(finalCreateStore);
   }
 
-  const composedMiddlewares = compose(thunkMiddleware, batchedUpdatesMiddleware);
+  // const composedMiddlewares = compose(thunkMiddleware, batchedUpdatesMiddleware);
 
   finalCreateStore = compose(
-    applyMiddleware(composedMiddlewares),
+    applyMiddleware(thunkMiddleware),
     reduxReactRouter({ routes: appRoutes, createHistory })
   )(finalCreateStore);
 
