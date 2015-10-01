@@ -29,10 +29,13 @@ class User extends React.Component {
     );
   }
 
-  _handleUserNameInputBlur(): any {
+  _handleUserEmailInputBlur(e): any {
+    e.preventDefault();
+
     const {user} = this.props;
-    const name = this.refs.userNameInput.value;
-    actionCreators.setUserName({user, name});
+    const email = this.refs.userEmailInput.value;
+
+    actionCreators.setUserEmail({user, email});
   }
 
   render() {
@@ -45,9 +48,9 @@ class User extends React.Component {
           <div className="card-block">
             <h4 className="card-title">{user.name}</h4>
             <input
-              ref="userNameInput"
+              ref="userEmailInput"
               type="text"
-              onBlur={this._handleUserNameInputBlur.bind(this)} />
+              onBlur={this._handleUserEmailInputBlur.bind(this)} />
             <p className="card-text">Some excerpt about the user.</p>
           </div>
           <ul className="list-group list-group-flush">

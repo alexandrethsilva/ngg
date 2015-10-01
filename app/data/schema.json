@@ -741,7 +741,7 @@
               "deprecationReason": null
             },
             {
-              "name": "setEmail",
+              "name": "setUserEmail",
               "description": null,
               "args": [
                 {
@@ -752,7 +752,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "INPUT_OBJECT",
-                      "name": "SetEmailInput",
+                      "name": "SetUserEmailInput",
                       "ofType": null
                     }
                   },
@@ -761,7 +761,34 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "SetEmailPayload",
+                "name": "SetUserEmailPayload",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "setUserName",
+              "description": null,
+              "args": [
+                {
+                  "name": "input",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "SetUserNameInput",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "SetUserNamePayload",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -943,7 +970,7 @@
         },
         {
           "kind": "INPUT_OBJECT",
-          "name": "SetEmailInput",
+          "name": "SetUserEmailInput",
           "description": null,
           "fields": null,
           "inputFields": [
@@ -988,7 +1015,91 @@
         },
         {
           "kind": "OBJECT",
-          "name": "SetEmailPayload",
+          "name": "SetUserEmailPayload",
+          "description": null,
+          "fields": [
+            {
+              "name": "user",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "User",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "clientMutationId",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "SetUserNameInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "uuid",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "name",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "clientMutationId",
+              "description": null,
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "SetUserNamePayload",
           "description": null,
           "fields": [
             {

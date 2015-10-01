@@ -34,7 +34,8 @@ type PageInfo {
 type RootMutation {
   createSession(input: CreateSessionInput!): CreateSessionPayload
   createUser(input: CreateUserInput!): CreateUserPayload
-  setEmail(input: SetEmailInput!): SetEmailPayload
+  setUserEmail(input: SetUserEmailInput!): SetUserEmailPayload
+  setUserName(input: SetUserNameInput!): SetUserNamePayload
 }
 
 type RootQuery {
@@ -57,13 +58,24 @@ type SessionEdge {
   cursor: String!
 }
 
-input SetEmailInput {
+input SetUserEmailInput {
   uuid: String
   email: String
   clientMutationId: String!
 }
 
-type SetEmailPayload {
+type SetUserEmailPayload {
+  user: User
+  clientMutationId: String!
+}
+
+input SetUserNameInput {
+  uuid: String
+  name: String
+  clientMutationId: String!
+}
+
+type SetUserNamePayload {
   user: User
   clientMutationId: String!
 }

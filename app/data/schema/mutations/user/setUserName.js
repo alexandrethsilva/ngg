@@ -1,14 +1,14 @@
 import {GraphQLString} from 'graphql';
 import {mutationWithClientMutationId} from 'graphql-relay';
 import getUserByUUID from '../../../queries/user/getUserByUUID';
-import setEmail from '../../../queries/user/setEmail';
+import setUserName from '../../../queries/user/setUserName';
 import {wrapField, OP_UPDATE} from '../../../uac';
 
 export default refs => wrapField(assertAccess => mutationWithClientMutationId({
-  name: 'SetEmail',
+  name: 'SetUserName',
   inputFields: {
     uuid: {type: GraphQLString},
-    email: {type: GraphQLString},
+    name: {type: GraphQLString},
   },
   outputFields: {
     user: wrapField({
@@ -16,7 +16,7 @@ export default refs => wrapField(assertAccess => mutationWithClientMutationId({
       resolve: user => user,
     }),
   },
-  mutateAndGetPayload: async ({uuid, email}) => {
+  mutateAndGetPayload: async ({uuid, name}) => {
     const user = await getUserByUUID(uuid);
 
     if (!user) {
@@ -25,6 +25,6 @@ export default refs => wrapField(assertAccess => mutationWithClientMutationId({
 
     await assertAccess(user, OP_UPDATE);
 
-    return await setEmail(user, email);
+    return await setUserName(user, name);
   },
 }));

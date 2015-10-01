@@ -1,6 +1,7 @@
-import webpack, {ProvidePlugin} from 'webpack';
+const webpack = require('webpack');
+const ProvidePlugin = webpack.ProvidePlugin;
 
-export default {
+module.exports = {
   devtool: '#source-map',
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:3000',

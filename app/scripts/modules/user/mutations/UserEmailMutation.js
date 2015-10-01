@@ -5,6 +5,7 @@ export default class UserEmailMutation extends Relay.Mutation {
     user: () => Relay.QL`
       fragment on User {
         id
+        uuid
       }
     `,
   }
@@ -15,7 +16,7 @@ export default class UserEmailMutation extends Relay.Mutation {
 
   getVariables() {
     return {
-      id: this.props.user.id,
+      uuid: this.props.user.uuid,
       email: this.props.email,
     };
   }

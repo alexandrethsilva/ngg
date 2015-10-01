@@ -1,6 +1,6 @@
 import {executeQuery, cypher} from '../../database';
 
-export default async function setEmail(user, email) {
+export default async function setUserEmail(user, email) {
   const result = await executeQuery(cypher`
     MATCH (u:User {uuid: ${user.properties.uuid}})
     SET u.email = ${email}
