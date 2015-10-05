@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 
 import FeedFragments from '../fragments/FeedFragments';
 import SignInContainer from '../../auth/components/SignInContainer';
-import UserComponent from '../../user/components/UserComponent';
+import UserProfileContainer from '../../user/components/UserProfileContainer';
 
 class Feed extends React.Component {
   static propTypes = {
@@ -36,7 +36,7 @@ export default compose(
         <SignInContainer key="signIn" />,
         <div key="users">
           {parentProps.viewer.users.edges.map(edge => (
-            <UserComponent key={edge.cursor} user={edge.node} />
+            <UserProfileContainer key={edge.cursor} user={edge.node} />
           ))}
         </div>
       ]

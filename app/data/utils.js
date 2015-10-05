@@ -1,15 +1,11 @@
 import {globalIdField} from 'graphql-relay';
 
-export function idField(type) {
-  return globalIdField(type, object => object._id);
+export function idField(type, idFieldName = 'uuid') {
+  return globalIdField(type, object => object.properties[idFieldName]);
 }
 
 export function prop(key) {
   return object => object.properties[key];
-}
-
-export function date(key) {
-  return object => object.properties[key]; // TODO Create a proper date type
 }
 
 export function attachFields(refs, fields) {

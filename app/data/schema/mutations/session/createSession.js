@@ -3,7 +3,7 @@ import {GraphQLString} from 'graphql';
 import {mutationWithClientMutationId} from 'graphql-relay';
 import getUserByEmail from '../../../queries/user/getUserByEmail';
 import createSessionForUser from '../../../queries/session/createSessionForUser';
-import {wrapField, OP_CREATE} from '../../../uac';
+import {wrapField, OP_CREATE} from '../../../acl';
 
 function comparePasswords(password, hash) {
   return new Promise((resolve, reject) => {

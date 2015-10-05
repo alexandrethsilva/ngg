@@ -10,10 +10,11 @@ export default compose(
     null,
     { handleAuthorize: authorize },
     (stateProps, dispatchProps/*, ownProps*/) => ({
-      handleAuthorize: ({email, password}) => dispatchProps.handleAuthorize({
-        email: email,//'a1@example.com',
-        password: password,//'12345'
-      })
+      handleAuthorize: (/*{email, password}*/) => dispatchProps.handleAuthorize({
+        email: 'user1@example.com',
+        password: '12345'
+      }),
+      dispatching: false
     })
   )
 )(SignIn);

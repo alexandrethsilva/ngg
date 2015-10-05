@@ -5,7 +5,7 @@ import applyMutation from '../../../utils/applyMutation';
 
 import AuthSessionMutation from '../mutations/AuthSessionMutation';
 
-export const setToken = createAction();
+export const setToken = createAction('setToken');
 
 export function readToken() {
   return dispatch => {
@@ -22,7 +22,7 @@ export function authorize({email, password}) {
     const result = await applyMutation(new AuthSessionMutation({email, password}));
     const token = result.createSession.session.sid;
 
-    document.cookie = `token=${token}: path=/`;
+    document.cookie = `token=${token}; path=/`;
 
     dispatch(setToken(token));
   };

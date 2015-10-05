@@ -1,5 +1,5 @@
 import Relay from 'react-relay';
-import UserComponent from '../../user/components/UserComponent';
+import UserProfileContainer from '../../user/components/UserProfileContainer';
 
 export default {
   viewer: () => Relay.QL`
@@ -8,7 +8,7 @@ export default {
         edges {
           cursor
           node {
-            ${UserComponent.getFragment('user')}
+            ${UserProfileContainer.getFragment('user')}
           }
         }
       }

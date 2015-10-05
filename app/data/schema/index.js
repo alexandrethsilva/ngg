@@ -1,15 +1,9 @@
 import {GraphQLSchema} from 'graphql';
-import {
-  nodeDefinitions,
-  connectionDefinitions,
-  fromGlobalId
-} from 'graphql-relay';
-
-import getObjectById from '../queries/common/getObjectById';
+import {nodeDefinitions, connectionDefinitions, fromGlobalId} from 'graphql-relay';
 
 import rootQuery from './operations/Query';
 import rootMutation from './operations/Mutation';
-import * as types from './models';
+import * as types from './types';
 
 const refCreators = {
   rootQuery,
@@ -18,10 +12,10 @@ const refCreators = {
 };
 
 const {nodeInterface, nodeField} = nodeDefinitions(
-  (globalId) => {
-    const {id} = fromGlobalId(globalId);
+  (globalId, {rootValue}) => {
+    const {type, id} = fromGlobalId(globalId);
 
-    return getObjectById(Number(id));
+    return rootValue.loaders[type].load(id);
   },
   (object) => {
     const label = object.labels[0];

@@ -1,7 +1,7 @@
 import {GraphQLString} from 'graphql';
 import {mutationWithClientMutationId} from 'graphql-relay';
 import createUser from '../../../queries/user/createUser';
-import {wrapField, OP_CREATE} from '../../../uac';
+import {wrapField, OP_CREATE} from '../../../acl';
 
 export default refs => wrapField(assertAccess => mutationWithClientMutationId({
   name: 'CreateUser',

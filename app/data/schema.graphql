@@ -83,11 +83,6 @@ type SetUserNamePayload {
 type User implements Node {
   id: ID!
   uuid: String
-  active: Boolean
-  since: String
-  last_seen: String
-  name: String
-  birthday: String
   email: String
   sessions(before: String, after: String, first: Int, last: Int): SessionConnection
 }
@@ -103,7 +98,6 @@ type UserEdge {
 }
 
 type Viewer {
-  node(id: ID!): Node
   user(uuid: ID): User
   users(before: String, after: String, first: Int, last: Int): UserConnection
 }

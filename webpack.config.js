@@ -1,5 +1,4 @@
-const webpack = require('webpack');
-const ProvidePlugin = webpack.ProvidePlugin;
+import {HotModuleReplacementPlugin, NoErrorsPlugin, ProvidePlugin} from 'webpack';
 
 module.exports = {
   devtool: '#source-map',
@@ -13,8 +12,8 @@ module.exports = {
       'holder': 'holderjs',
     }),
 
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new HotModuleReplacementPlugin(),
+    new NoErrorsPlugin()
   ],
   module: {
     loaders: [

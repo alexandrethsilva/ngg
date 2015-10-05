@@ -1,17 +1,11 @@
 /* @flow */
-import React from 'react';
+import React, {PropTypes} from 'react';
 
-import relay from '../../../utils/relay';
-import {compose} from 'redux';
-import {connect} from 'react-redux';
-
-import UserFragments from '../fragments/UserFragments';
-
-import * as actionCreators from '../actions/UserActionCreators';
-
-class User extends React.Component {
+export default class UserProfile extends React.Component {
   static propTypes = {
-    user: React.PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    //handleSetUserName: PropTypes.func.isRequired,
+    handleSetUserEmail: PropTypes.func.isRequired,
   }
 
   imagePlaceholder(width: string = '100%', height: string = '100%'): any {
@@ -29,26 +23,22 @@ class User extends React.Component {
     );
   }
 
-  _handleUserEmailInputBlur(e): any {
-    e.preventDefault();
-
-    const {user} = this.props;
-    const name = this.refs.userNameInput.value;
-
-    actionCreators.setUserName({user, name});
+  _handleUserEmailInputBlur(): void {
+    const email = this.refs.userEmailInput.value;
+    this.props.handleSetUserEmail({email});
   }
 
   render() {
-    const { user } = this.props;
+    const {user} = this.props;
 
     return (
       <div className="col-sm-3">
         <div className="card">
           {this.imagePlaceholder(undefined, '180px')}
           <div className="card-block">
-            <h4 className="card-title">{user.name}</h4>
+            <h4 className="card-title">{user.email}</h4>
             <input
-              ref="userNameInput"
+              ref="userEmailInput"
               type="text"
               onBlur={this._handleUserEmailInputBlur.bind(this)} />
             <p className="card-text">Some excerpt about the user.</p>
@@ -66,16 +56,3 @@ class User extends React.Component {
 
   }
 }
-
-export default compose(
-  relay({
-    fragments: UserFragments
-  }),
-  connect(
-    state => state,
-    actionCreators,
-    (stateProps, actionProps, parentProps) => ({
-      user: parentProps.user
-    })
-  )
-)(User);

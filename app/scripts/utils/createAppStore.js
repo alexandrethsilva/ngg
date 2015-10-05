@@ -12,9 +12,11 @@ export default function createAppStore(initialState) {
   let finalCreateStore = createStore;
 
   if (process.env.NODE_ENV !== 'production') {
-    let {devTools, persistState} = require('redux-devtools'); // eslint-disable-line prefer-const
+    const {devTools, persistState} = require('redux-devtools');
+    const logger = require('redux-logger');
 
     finalCreateStore = compose(
+      applyMiddleware(logger()),
       devTools(),
       persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
     )(finalCreateStore);

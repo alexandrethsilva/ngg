@@ -1,10 +1,10 @@
-import uac, {OP_READ} from './index';
+import acl, {OP_READ} from './index';
 
 export default function wrapField(field) {
   let currentInfo;
 
   const checkAccess = (object, operation) => {
-    return uac(object, currentInfo.rootValue.user, operation);
+    return acl(object, currentInfo.rootValue.user, operation);
   };
 
   const assertAccess = async (object, operation) => {
@@ -18,8 +18,8 @@ export default function wrapField(field) {
 
     const operationText = `operation "${operation}"`;
 
-    const objectText = object.name
-      ? `type ${object.name}`
+    const objectText = object.name || object.ofType
+      ? `type ${object.name || object.ofType.name}`
       : `object (:${object.labels.join(':')}) with id "${object._id}"`;
 
     const text = `${userText} can not make ${operationText} on ${objectText}`;

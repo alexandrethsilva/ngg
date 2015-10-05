@@ -36,6 +36,11 @@ async function initApp(): any {
     const container = document.getElementById('root');
 
     if (process.env.NODE_ENV !== 'production') {
+
+      const Perf = require('react-addons-perf');
+      window.Perf = Perf;
+      Perf.start();
+
       let {
         DevTools, // eslint-disable-line prefer-const
         DebugPanel, // eslint-disable-line prefer-const
