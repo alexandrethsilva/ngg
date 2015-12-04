@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import Schema from '../app/data/schema';
-import {graphql}  from 'graphql';
+import {graphql} from 'graphql';
 import {introspectionQuery, printSchema} from 'graphql/utilities';
 
 // Save JSON of full schema introspection for Babel Relay Plugin to use

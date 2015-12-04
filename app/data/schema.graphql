@@ -84,7 +84,7 @@ type User implements Node {
   id: ID!
   uuid: String
   email: String
-  sessions(before: String, after: String, first: Int, last: Int): SessionConnection
+  sessions(after: String, first: Int, before: String, last: Int): SessionConnection
 }
 
 type UserConnection {
@@ -99,5 +99,5 @@ type UserEdge {
 
 type Viewer {
   user(uuid: ID): User
-  users(before: String, after: String, first: Int, last: Int): UserConnection
+  users(after: String, first: Int, before: String, last: Int): UserConnection
 }

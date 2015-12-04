@@ -4,15 +4,19 @@ CREATE CONSTRAINT ON (s:Session) ASSERT s.sid IS UNIQUE;
 
 CREATE (user:User {
   uuid: "e61d795e-fdf8-4cb7-a280-8542e66ebb25",
-  email: "user1@example.com",
+  name: "John Doe",
+  email: "johndoe@example.com",
   password: "$2a$10$AENmBPIy5a13qGkNiyssNeOeYNhASbJTRgVgcs3z5bQl0Im97X7hu",
+
   role: "USER"
 })
 
 CREATE (admin:User {
   uuid: "e624a76a-e5c0-4388-bd02-612e55dc2299",
-  email: "user2@example.com",
+  name: "Jane Doe",
+  email: "janedoe@example.com",
   password: "$2a$10$p7w8khG4NbcR0xSdy/MK2u33hzkDBCHZwmRJFaVYqNJjbBPuwv3s6",
+
   role: "ADMIN"
 })
 

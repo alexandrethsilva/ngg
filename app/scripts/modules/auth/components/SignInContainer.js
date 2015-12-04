@@ -11,7 +11,7 @@ export default compose(
     { handleAuthorize: authorize },
     (stateProps, dispatchProps/*, ownProps*/) => ({
       handleAuthorize: (/*{email, password}*/) => dispatchProps.handleAuthorize({
-        email: 'user1@example.com',
+        email: 'johndoe@example.com',
         password: '12345'
       }),
       dispatching: false

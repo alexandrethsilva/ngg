@@ -1,4 +1,4 @@
-import {routerStateReducer} from 'redux-react-router';
+import {routerStateReducer} from 'redux-router';
 import {reducer as formReducer} from 'redux-form';
 
 // Regex matching any JS file inside a reducers folder.
