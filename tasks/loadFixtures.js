@@ -17,7 +17,7 @@ main(async () => {
 
   for (const query of fixtures) {
     await executeQuery({
-      query
+      query,
     });
   }
 });

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 class App extends React.Component {
   static propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
   }
 
   render() {
@@ -22,6 +22,6 @@ class App extends React.Component {
 
 export default connect(
   state => ({
-    children: state.router.screen
+    children: state.router.screen,
   })
 )(App);

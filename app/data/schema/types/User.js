@@ -1,6 +1,6 @@
-import {GraphQLObjectType, GraphQLString} from 'graphql';
+import {GraphQLObjectType, GraphQLString, GraphQLBoolean} from 'graphql';
 import getUserSessions from '../../queries/user/getUserSessions';
-import {idField, prop} from '../../utils';
+import {idField, prop, date} from '../../utils';
 import {wrapConnectionField} from '../../acl';
 
 export default refs => new GraphQLObjectType({
@@ -10,6 +10,26 @@ export default refs => new GraphQLObjectType({
     uuid: {
       type: GraphQLString,
       resolve: prop('uuid'),
+    },
+    active: {
+      type: GraphQLBoolean,
+      resolve: prop('active'),
+    },
+    since: {
+      type: GraphQLString,
+      resolve: date('since'),
+    },
+    last_seen: {
+      type: GraphQLString,
+      resolve: date('last_seen'),
+    },
+    name: {
+      type: GraphQLString,
+      resolve: prop('name'),
+    },
+    birthday: {
+      type: GraphQLString,
+      resolve: date('birthday'),
     },
     email: {
       type: GraphQLString,

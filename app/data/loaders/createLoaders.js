@@ -17,6 +17,6 @@ export default function createLoaders() {
       queriesLoader,
       nodeLabel: 'Session',
       idFieldName: 'sid',
-    })
+    }),
   };
 }

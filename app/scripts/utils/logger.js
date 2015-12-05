@@ -1,4 +1,5 @@
 /* @flow */
+/*eslint-disable no-console */
 const ENV: string = process.env.NODE_ENV;
 
 const debugConfig: string = `
@@ -89,5 +90,6 @@ export default {
     if (activeEnvironment) {
       return console.timeEnd(title);
     }
-  }
+  },
 };
+/*eslint-enable */

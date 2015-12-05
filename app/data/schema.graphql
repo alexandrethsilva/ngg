@@ -83,6 +83,11 @@ type SetUserNamePayload {
 type User implements Node {
   id: ID!
   uuid: String
+  active: Boolean
+  since: String
+  last_seen: String
+  name: String
+  birthday: String
   email: String
   sessions(after: String, first: Int, before: String, last: Int): SessionConnection
 }

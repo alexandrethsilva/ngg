@@ -8,6 +8,6 @@ const req: Function = require.context(
 export default [
   {
     component: AppComponent,
-    childRoutes: req.keys().map(req)
-  }
+    childRoutes: req.keys().map(req),
+  },
 ];

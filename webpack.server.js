@@ -61,7 +61,7 @@ graphQLServer.use(graphQLHTTP(request =>({
   },
 })));
 
-graphQLServer.listen(GRAPHQL_PORT, () => console.log(
+graphQLServer.listen(GRAPHQL_PORT, () => console.log( // eslint-disable-line no-console
   `GraphQL Server is now running on ${HOST}:${GRAPHQL_PORT}`
 ));
 
@@ -74,7 +74,7 @@ const app = new WebpackDevServer(appCompiler, {
   quiet: false,
   noInfo: false,
   stats: { colors: true },
-  historyApiFallback: true
+  historyApiFallback: true,
 });
 
 // Serve static resources
@@ -101,5 +101,5 @@ app.use('/scripts/bootstrap.js', BS_JS_ROOT);
 app.use('/scripts/jquery.js', JQ_JS_ROOT);
 app.use('/user/:uuid', ROOT);
 app.listen(APP_PORT, () => {
-  console.log(`App is now running on ${HOST}:${APP_PORT}`);
+  console.log(`App is now running on ${HOST}:${APP_PORT}`); // eslint-disable-line no-console
 });

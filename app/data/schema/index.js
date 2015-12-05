@@ -37,5 +37,5 @@ const refs = Object.keys(refCreators)
 
 export default new GraphQLSchema({
   query: refs.rootQuery,
-  mutation: refs.rootMutation
+  mutation: refs.rootMutation,
 });

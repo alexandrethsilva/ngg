@@ -1,4 +1,3 @@
-/* @flow */
 import 'babel/polyfill';
 
 import React from 'react';
@@ -14,12 +13,12 @@ import createAppStore from './utils/createAppStore';
 
 import Logger from './utils/logger';
 
-async function initApp(): void {
+async function initApp() {
   try {
 
     Relay.injectNetworkLayer(
       new Relay.DefaultNetworkLayer('/graphql', {
-        credentials: 'same-origin'
+        credentials: 'same-origin',
       })
     );
 

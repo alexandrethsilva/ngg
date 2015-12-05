@@ -11,7 +11,7 @@ import UserProfileContainer from '../../user/components/UserProfileContainer';
 
 class Feed extends React.Component {
   static propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
   }
 
   render() {
@@ -25,7 +25,7 @@ class Feed extends React.Component {
 
 export default compose(
   relay({
-    fragments: FeedFragments
+    fragments: FeedFragments,
   }),
   connect(
     null,
@@ -38,8 +38,8 @@ export default compose(
           {parentProps.viewer.users.edges.map(edge => (
             <UserProfileContainer key={edge.cursor} user={edge.node} />
           ))}
-        </div>
-      ]
+        </div>,
+      ],
     })
   )
 )(Feed);

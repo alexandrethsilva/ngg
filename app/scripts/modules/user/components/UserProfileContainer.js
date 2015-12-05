@@ -11,24 +11,24 @@ import UserProfile from './UserProfile';
 
 export default compose(
   relay({
-    fragments: UserFragments
+    fragments: UserFragments,
   }),
   connect(
     null,
     {
-      // handleSetUserName: actionCreators.setUserName,
+      handleSetUserName: actionCreators.setUserName,
       handleSetUserEmail: actionCreators.setUserEmail,
     },
     (stateProps, dispatchProps, ownProps) => ({
       user: ownProps.user,
-      // handleSetUserName: ({name}) => dispatchProps.handleSetUserName({
-      //   name,
-      //   user: ownProps.user,
-      // }),
+      handleSetUserName: ({name}) => dispatchProps.handleSetUserName({
+        name,
+        user: ownProps.user,
+      }),
       handleSetUserEmail: ({email}) => dispatchProps.handleSetUserEmail({
         email,
         user: ownProps.user,
-      })
+      }),
     })
   )
 )(UserProfile);

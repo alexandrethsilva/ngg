@@ -32,8 +32,8 @@ export default class AuthSessionMutation extends Relay.Mutation {
               sid
             }
           }
-        `
-      ]
+        `,
+      ],
     }];
   }
 

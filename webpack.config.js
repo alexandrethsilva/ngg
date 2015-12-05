@@ -5,7 +5,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:3000',
     'webpack/hot/only-dev-server',
-    './app/scripts/index'
+    './app/scripts/index',
   ],
   plugins: [
     new ProvidePlugin({
@@ -13,7 +13,7 @@ module.exports = {
     }),
 
     new HotModuleReplacementPlugin(),
-    new NoErrorsPlugin()
+    new NoErrorsPlugin(),
   ],
   module: {
     loaders: [
@@ -23,15 +23,15 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loaders: [
           'react-hot',
-          'babel?cacheDirectory&optional[]=runtime&stage=0&plugins=./build/babelRelayPlugin'
-        ]
-      }
-    ]
+          'babel?cacheDirectory&optional[]=runtime&stage=0&plugins=./build/babelRelayPlugin',
+        ],
+      },
+    ],
   },
   output: {
     filename: 'bundle.js',
     path: '/',
     pathInfo: true,
-    publicPath: '/scripts/'
-  }
+    publicPath: '/scripts/',
+  },
 };
