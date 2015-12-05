@@ -2,7 +2,7 @@
 
 ## Installation
 
-```
+``` shell
 npm install
 ```
 
@@ -10,23 +10,26 @@ npm install
 
 Start a local server:
 
-```
+``` shell
 npm start
 ```
 
 ## Developing
 
-Any changes you make to files in the `scripts/` directory will cause the server to
-automatically rebuild the app and refresh your browser.
+Any changes you make to files in the `scripts/` directory will cause the
+server to automatically rebuild the app and refresh your browser.
 
 If at any time you make changes to `data/schema.js`, stop the server,
 regenerate `data/schema.json`, and restart the server:
 
-```
+``` shell
+npm run clear-schema
 npm run update-schema
 npm start
 ```
 
-## License
+For re-pushing data into Neo
 
-Relay Starter Kit is [BSD licensed](./LICENSE). We also provide an additional [patent grant](./PATENTS).
+``` shell
+npm run load-fixtures
+```
