@@ -1,9 +1,9 @@
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 
-import {authorize} from '../actions/AuthActionCreators';
+import {authorize} from 'auth/actions/AuthActionCreators';
 
-import SignIn from './SignIn';
+import SignIn from 'auth/components/SignIn';
 
 export default compose(
   connect(

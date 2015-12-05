@@ -1,9 +1,9 @@
 import {createAction} from 'redux-act';
 import cookie from 'cookie';
 
-import applyMutation from '../../../utils/applyMutation';
+import applyMutation from 'utils/applyMutation';
 
-import AuthSessionMutation from '../mutations/AuthSessionMutation';
+import AuthSessionMutation from 'auth/mutations/AuthSessionMutation';
 
 export const setToken = createAction('setToken');
 

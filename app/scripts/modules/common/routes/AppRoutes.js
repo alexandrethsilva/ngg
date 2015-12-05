@@ -1,8 +1,8 @@
-import {AppComponent} from '../components/AppComponent';
+import {AppComponent} from 'common/components/AppComponent';
 
 // Matches any JS file inside a 'routes' folder.
 const req: Function = require.context(
-  '../../', true, /^\.\/[a-z]+\/routes\/[a-z]+\.js$/i
+  'modules', true, /^\.\/[a-z]+\/routes\/[a-z]+\.js$/i
 );
 
 export default [

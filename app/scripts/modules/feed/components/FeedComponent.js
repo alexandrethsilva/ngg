@@ -1,13 +1,13 @@
 import 'babel/polyfill';
 import React, {PropTypes} from 'react';
 
-import relay from '../../../utils/relay';
+import relay from 'utils/relay';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 
-import FeedFragments from '../fragments/FeedFragments';
-import SignInContainer from '../../auth/components/SignInContainer';
-import UserProfileContainer from '../../user/components/UserProfileContainer';
+import FeedFragments from 'feed/fragments/FeedFragments';
+import SignInContainer from 'auth/components/SignInContainer';
+import UserProfileContainer from 'user/components/UserProfileContainer';
 
 class Feed extends React.Component {
   static propTypes = {

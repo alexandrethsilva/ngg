@@ -1,7 +1,7 @@
 import Relay from 'react-relay';
 
-import UserEmailMutation from '../mutations/UserEmailMutation';
-import UserNameMutation from '../mutations/UserNameMutation';
+import UserEmailMutation from 'user/mutations/UserEmailMutation';
+import UserNameMutation from 'user/mutations/UserNameMutation';
 
 export default {
   user: () => Relay.QL`

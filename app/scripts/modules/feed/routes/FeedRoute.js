@@ -1,5 +1,5 @@
-import FeedComponent from '../components/FeedComponent';
-import FeedQueries from '../queries/FeedQueries';
+import FeedComponent from 'feed/components/FeedComponent';
+import FeedQueries from 'feed/queries/FeedQueries';
 
 export default {
   path: '/',

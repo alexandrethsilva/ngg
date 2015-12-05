@@ -1,3 +1,4 @@
+import path from 'path';
 import {HotModuleReplacementPlugin, NoErrorsPlugin, ProvidePlugin} from 'webpack';
 
 module.exports = {
@@ -33,5 +34,15 @@ module.exports = {
     path: '/',
     pathInfo: true,
     publicPath: '/scripts/',
+  },
+  resolve: {
+    alias: {
+      modules: path.join(__dirname, '/app/scripts/modules'),
+      auth: path.join(__dirname, '/app/scripts/modules/auth'),
+      common: path.join(__dirname, '/app/scripts/modules/common'),
+      feed: path.join(__dirname, '/app/scripts/modules/feed'),
+      user: path.join(__dirname, '/app/scripts/modules/user'),
+      utils: path.join(__dirname, '/app/scripts/utils'),
+    },
   },
 };

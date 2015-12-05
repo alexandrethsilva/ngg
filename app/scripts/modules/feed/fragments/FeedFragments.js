@@ -1,5 +1,5 @@
 import Relay from 'react-relay';
-import UserProfileContainer from '../../user/components/UserProfileContainer';
+import UserProfileContainer from 'user/components/UserProfileContainer';
 
 export default {
   viewer: () => Relay.QL`

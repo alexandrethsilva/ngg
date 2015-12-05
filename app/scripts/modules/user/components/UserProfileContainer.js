@@ -1,13 +1,13 @@
 /* @flow */
-import relay from '../../../utils/relay';
+import relay from 'utils/relay';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 
-import UserFragments from '../fragments/UserFragments';
+import UserFragments from 'user/fragments/UserFragments';
 
-import * as actionCreators from '../actions/UserActionCreators';
+import * as actionCreators from 'user/actions/UserActionCreators';
 
-import UserProfile from './UserProfile';
+import UserProfile from 'user/components/UserProfile';
 
 export default compose(
   relay({

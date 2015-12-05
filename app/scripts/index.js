@@ -9,9 +9,9 @@ import {ReduxRouter} from 'redux-router';
 import {RelayRoutingContext} from 'react-router-relay';
 
 import init from './init';
-import createAppStore from './utils/createAppStore';
+import createAppStore from 'utils/createAppStore';
 
-import Logger from './utils/logger';
+import Logger from 'utils/logger';
 
 async function initApp() {
   try {

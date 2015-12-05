@@ -5,8 +5,8 @@ import thunkMiddleware from 'redux-thunk';
 // import {batchedUpdatesMiddleware} from 'redux-batched-updates';
 import {reduxReactRouter} from 'redux-router';
 
-import appRoutes from '../modules/common/routes/AppRoutes';
-import appReducers from '../modules/common/reducers/AppReducers';
+import appRoutes from 'modules/common/routes/AppRoutes';
+import appReducers from 'modules/common/reducers/AppReducers';
 
 export default function createAppStore(initialState) {
   let finalCreateStore = createStore;

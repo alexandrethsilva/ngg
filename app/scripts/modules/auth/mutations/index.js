@@ -1,1 +1,1 @@
-export {default as AuthSessionMutation} from './AuthSessionMutation';
+export {default as AuthSessionMutation} from 'auth/mutations/AuthSessionMutation';
