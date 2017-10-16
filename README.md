@@ -1,5 +1,7 @@
 # Engage - Based on Relay
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/alexandrethsilva/ngg.svg?token=84ffd9dd7534d741891343233286d5d14c40f769af91e710d1c53c3c15bab03b&ts=1508159652384)](https://greenkeeper.io/)
+
 ## Installation
 
 ``` shell
